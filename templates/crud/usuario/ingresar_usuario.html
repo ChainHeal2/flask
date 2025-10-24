@@ -1,0 +1,9 @@
+{%extends 'base.html'%} {#esto es el codigo que sirve para extender desde alguna plantilla#}
+{%block titulo%}ingreso usuario{%endblock%}
+{%block contenido%}
+<ul>
+{%for user in usuarios%}
+<li>{{user['nombres']}}</li>
+{%endfor%}
+</ul>
+{%endblock%}

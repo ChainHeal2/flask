@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css') }}">
+    <title>{%block titulo%}{%endblock%}</title>
+</head>
+<body>
+    {%block contenido%} <h1>Soy Platilla Base</h1> {%endblock%}
+    {#  {% ... %}Para declaraciones #}
+    {#  {{ ... }}Para que las se impriman en la salida de la plantilla #}
+    {##}
+</body>
+</html>
