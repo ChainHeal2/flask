@@ -1,9 +1,13 @@
 {%extends 'base.html'%} {#esto es el codigo que sirve para extender desde alguna plantilla#}
 {%block titulo%}ingreso usuario{%endblock%}
 {%block contenido%}
-<ul>
-{%for user in usuarios%}
-<li>{{user['nombres']}}</li>
-{%endfor%}
-</ul>
+<form action="post">
+    <label for="">Nombre</label>
+    <input type="text" name="nombre">
+     <label for="">Apellido Paterno</label>
+    <input type="text" name="apaterno">
+     <label for="">Apellido Materno</label>
+    <input type="text"name="amaterno">
+    <button type="submit">Enviar</button>
+</form>
 {%endblock%}
