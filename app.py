@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request,redirect,url_for
+from flask import Flask,render_template,request,redirect,url_for,abort
 import mysql.connector
 midb = mysql.connector.connect(
     host="localhost",
@@ -17,20 +17,23 @@ def index(nombre = None):
 def ver_usuario():
     cursor.execute('select * from usuario')
     usuarios = cursor.fetchall()
-    print(type(usuarios))
-    for usuario in usuarios:
-        print(usuario)
-    return render_template("crud/usuario/mostrar.html",usuarios = usuarios)
+    print(usuarios)
+    return render_template("crud/usuario/lista_usuario.html",usuarios = usuarios)
 
 @app.route("/ingreso",methods = ['GET','POST'])
 def ingreso_usuario():
     if request.method == 'POST':
-        nombres = request.form['nombres']
-        apaterno = request.form['apaterno']
-        amaterno = request.form['amaterno']
-        sql = f"insert into usuario (nombres,apaterno,amaterno) values ('{nombres}','{apaterno}','{amaterno}');"
-        print(sql)
-        cursor.execute(sql)
-        midb.commit()
-        return redirect(url_for('ver_usuario'))
+        for campo in request.form:
+            if len(request.form[campo]) > 0 and request.form[campo] not in '1234567890' : #cambiar un largo mas real 4
+                print("todo correcto")
+                nombres = request.form['nombres']
+                apaterno = request.form['apaterno']
+                amaterno = request.form['amaterno']
+                sql = f"insert into usuario (nombres,apaterno,amaterno) values ('{nombres.lower().strip()}','{apaterno.lower().strip()}','{amaterno.lower().strip()}');"
+                print(sql)
+                cursor.execute(sql)
+                midb.commit()
+                return redirect(url_for('ver_usuario'))
+            else:
+                abort(400)
     return render_template('crud/usuario/ingresar_usuario.html')

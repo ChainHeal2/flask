@@ -1,9 +1,11 @@
 {%extends 'base.html'%} {#esto es el codigo que sirve para extender desde alguna plantilla#}
-{%block titulo%}Soy SQL{%endblock%}
+{%block titulo%}Lista usuarios{%endblock%}
 {%block contenido%}
+<h1>Lista de usuarios</h1>
 <ul>
 {%for user in usuarios%}
 <li>{{user['nombres']}}</li>
 {%endfor%}
 </ul>
+<li><a href="{{url_for('index')}}">INDEX</a></li>
 {%endblock%}
