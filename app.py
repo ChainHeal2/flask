@@ -20,7 +20,7 @@ def ver_usuario():
     print(usuarios)
     return render_template("crud/usuario/lista_usuario.html",usuarios = usuarios)
 
-@app.route("/ingreso",methods = ['GET','POST'])
+@app.route("/ingreso",methods = ['POST'])
 def ingreso_usuario():
     if request.method == 'POST':
         for campo in request.form:
@@ -37,3 +37,8 @@ def ingreso_usuario():
             else:
                 abort(400)
     return render_template('crud/usuario/ingresar_usuario.html')
+
+@app.route("/modificar",methods = ['POST'])
+def modificar_usuario():
+    print("Hello")
+    return render_template('crud/usuario/modificar_usuario.html')
