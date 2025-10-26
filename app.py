@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request
+from flask import Flask,render_template,request,redirect,url_for
 import mysql.connector
 midb = mysql.connector.connect(
     host="localhost",
@@ -11,7 +11,7 @@ app = Flask(__name__)
 @app.route("/")#Luego del slash podemos poner la ruta asociada en el navegador ejemplo http://127.0.0.1:5000/formularios
 @app.route("/<nombre>")
 def index(nombre = None):
-    return render_template('pagina_inicio/index.html',nombre_usuario = nombre) # la raiz de render_template sera una carpeta por defecto llamada templates
+    return render_template('base.html',nombre_usuario = nombre) # la raiz de render_template sera una carpeta por defecto llamada templates
 
 @app.route("/sql")
 def ver_usuario():
@@ -20,9 +20,17 @@ def ver_usuario():
     print(type(usuarios))
     for usuario in usuarios:
         print(usuario)
-    return render_template("mostrar.html",usuarios = usuarios)
+    return render_template("crud/usuario/mostrar.html",usuarios = usuarios)
 
 @app.route("/ingreso",methods = ['GET','POST'])
 def ingreso_usuario():
     if request.method == 'POST':
-        
+        nombres = request.form['nombres']
+        apaterno = request.form['apaterno']
+        amaterno = request.form['amaterno']
+        sql = f"insert into usuario (nombres,apaterno,amaterno) values ('{nombres}','{apaterno}','{amaterno}');"
+        print(sql)
+        cursor.execute(sql)
+        midb.commit()
+        return redirect(url_for('ver_usuario'))
+    return render_template('crud/usuario/ingresar_usuario.html')
