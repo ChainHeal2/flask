@@ -17,10 +17,9 @@ def index(nombre = None):
 def ver_usuario():
     cursor.execute('select * from usuario')
     usuarios = cursor.fetchall()
-    print(usuarios)
     return render_template("crud/usuario/lista_usuario.html",usuarios = usuarios)
 
-@app.route("/ingreso",methods = ['POST'])
+@app.route("/ingreso",methods = ['POST','GET'])
 def ingreso_usuario():
     if request.method == 'POST':
         for campo in request.form:
@@ -38,7 +37,8 @@ def ingreso_usuario():
                 abort(400)
     return render_template('crud/usuario/ingresar_usuario.html')
 
-@app.route("/modificar",methods = ['POST'])
+@app.route("/modificar",methods = ['POST','GET'])
 def modificar_usuario():
-    print("Hello")
-    return render_template('crud/usuario/modificar_usuario.html')
+    cursor.execute('select * from usuario')
+    usuarios = cursor.fetchall()
+    return render_template('crud/usuario/modificar_usuario.html',usuarios = usuarios)

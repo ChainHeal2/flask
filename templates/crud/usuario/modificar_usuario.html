@@ -3,4 +3,17 @@
 {%block contenido%}
 <h1>Modificar Usuario</h1>
 <li><a href="{{url_for('index')}}">INDEX</a></li>
+{%for usuario in usuarios%}
+<form action="" method="post">
+<ul> 
+    <h3>{{usuario.id}}</h3>
+    <li><input type="text" value="{{usuario.nombres}}"></li>
+    <li><input type="text" value="{{usuario.apaterno}}"></li>
+    <li><input type="text" value="{{usuario.amaterno}}"></li>
+    <button type="submit">Modificar</button>
+    
+</ul>
+</form>
+{%endfor%}
+
 {%endblock%}
