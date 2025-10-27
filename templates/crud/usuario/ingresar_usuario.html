@@ -2,14 +2,18 @@
 {%block titulo%}Ingreso Usuario{%endblock%}
 {%block contenido%}
 <h1>Ingreso de usuario</h1>
-<form method="post">
-    <label for="">Nombre</label>
-    <input type="text" name="nombres">
-     <label for="">Apellido Paterno</label>
-    <input type="text" name="apaterno">
-     <label for="">Apellido Materno</label>
-    <input type="text"name="amaterno">
+<div>
+    <form method="post">
+        <ul>
+        <li><label for="">Nombre</label></li>
+        <input type="text" name="nombres">
+       <li><label for="">Apellido Paterno</label></li>
+        <input type="text" name="apaterno">
+        <li><label for="">Apellido Materno</label></li>
+        <input type="text"name="amaterno">
+        
+        </ul>
+    </form>
     <button type="submit">Enviar</button>
-</form>
-<li><a href="{{url_for('index')}}">INDEX</a></li>
+</div>
 {%endblock%}

@@ -39,6 +39,18 @@ def ingreso_usuario():
 
 @app.route("/modificar",methods = ['POST','GET'])
 def modificar_usuario():
-    cursor.execute('select * from usuario')
-    usuarios = cursor.fetchall()
+    if request.method == 'GET':
+        cursor.execute('select * from usuario')
+        usuarios = cursor.fetchall()
+    else:
+        cursor.execute('select * from usuario')
+        usuarios = cursor.fetchall()
+        nombres = request.form['nombres']
+        apaterno = request.form['apaterno']
+        amaterno = request.form['amaterno']
+        id_usuario = request.form.get('id')
+        sql = f"UPDATE usuario SET nombres = '{nombres}', apaterno = '{apaterno}', amaterno = '{amaterno}' WHERE (id = '{id_usuario}');"
+        cursor.execute(sql)
+        midb.commit()
+        return(redirect(url_for('modificar_usuario')))
     return render_template('crud/usuario/modificar_usuario.html',usuarios = usuarios)

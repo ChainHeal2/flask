@@ -4,14 +4,14 @@
 <h1>Modificar Usuario</h1>
 <li><a href="{{url_for('index')}}">INDEX</a></li>
 {%for usuario in usuarios%}
-<form action="" method="post">
+<form action="" method="post" type="hidden" id = "{{usuario['id']}}">
 <ul> 
-    <h3>{{usuario.id}}</h3>
-    <li><input type="text" value="{{usuario.nombres}}"></li>
-    <li><input type="text" value="{{usuario.apaterno}}"></li>
-    <li><input type="text" value="{{usuario.amaterno}}"></li>
-    <button type="submit">Modificar</button>
-    
+    <h3>{{usuario['id']}}</h3>
+    <input type="hidden" name="id" id="" value="{{usuario['id']}}">
+    <li><input type="text" value="{{usuario.nombres}}" name="nombres"></li>
+    <li><input type="text" value="{{usuario.apaterno}}"name="apaterno"></li>
+    <li><input type="text" value="{{usuario.amaterno}}"name="amaterno"></li>
+    <button type="submit">Modificar</button>  
 </ul>
 </form>
 {%endfor%}
