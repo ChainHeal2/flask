@@ -1,0 +1,18 @@
+{%extends 'base.html'%} {#esto es el codigo que sirve para extender desde alguna plantilla#}
+{%block titulo%}Eliminar Usuario{%endblock%}
+{%block contenido%}
+<h1>Eliminar Usuario</h1>
+{%for usuario in usuarios%}
+<form action="" method="post" type="hidden" id = "{{usuario['id']}}">
+<ul> 
+    <h3>{{usuario['id']}}</h3>
+    <input type="hidden" name="id" id="" value="{{usuario['id']}}">
+    <li><input type="text" disabled value="{{usuario.nombres}}" name="nombres"></li>
+    <li><input type="text" disabled value="{{usuario.apaterno}}"name="apaterno"></li>
+    <li><input type="text" disabled value="{{usuario.amaterno}}"name="amaterno"></li>
+    <button type="submit" id="modificar">Eliminar</button>
+</ul>
+</form>
+{%endfor%}
+
+{%endblock%}

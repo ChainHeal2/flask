@@ -1,11 +1,27 @@
 {%extends 'base.html'%} {#esto es el codigo que sirve para extender desde alguna plantilla#}
 {%block titulo%}Lista usuarios{%endblock%}
 {%block contenido%}
-<li><a href="{{url_for('index')}}">INDEX</a></li>
 <h1>Lista de usuarios</h1>
-<ul>
-{%for user in usuarios%}
-<li>{{user['nombres']}}</li>
-{%endfor%}
-</ul>
+<div
+    class="table-responsive-sm"
+>
+    <table
+        class="table table-primary"
+    >
+        <thead>
+            <tr>
+                <th scope="col">Nombres</th>
+                <th scope="col">Apellido Paterno</th>
+                <th scope="col">Apellido Materno</th>
+            </tr>
+        </thead>
+        {%for user in usuarios%}
+        <tbody>
+            <td>{{user['nombres']}}</td>
+            <td>{{user['apaterno']}}</td>
+            <td>{{user['amaterno']}}</td>
+        {%endfor%}
+        </tbody>
+    </table>
+</div>
 {%endblock%}

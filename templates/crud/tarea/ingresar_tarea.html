@@ -1,0 +1,33 @@
+{%extends 'base.html'%} {#esto es el codigo que sirve para extender desde alguna plantilla#}
+{%block titulo%}Ingreso tarea{%endblock%}
+{%block contenido%}
+<h1>Ingreso de tarea</h1>
+<div>
+    <form method="post">
+        <ul>
+        <li><label for="">Descripcion Tarea</label></li>
+        <input type="text" name="desc_tarea">
+        <div class="btn-group">
+            <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                id="triggerId"
+                data-bs-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false">
+                seleccione el usuario a asignar
+            </button>
+            <div
+                class="dropdown-menu dropdown-menu-start"
+                aria-labelledby="triggerId">
+                {%for usuario in usuarios%}
+                <label for="{{usuario.id}}"><input type="checkbox" name="" id="">{{usuario.nombres}} {{usuario.apaterno}} {{usuario.amaterno}}</label>
+                {%endfor%}
+            </div>
+        </div>
+        <button type="submit">Enviar</button>
+        </ul>
+    </form>
+   
+</div>
+{%endblock%}

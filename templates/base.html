@@ -12,45 +12,44 @@
             integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
             crossorigin="anonymous"/>
     </head>
-    
     <body>
         <header>
             <!-- place navbar here -->
             <!-- Nav tabs -->
-            <ul
-                class="nav nav-tabs"
+            <ul class="nav nav-tabs"
                 id="navId"
-                role="tablist"
-            >
+                role="tablist">
                 <li class="nav-item dropdown">
-                    <a
-                        class="nav-link dropdown-toggle"
+                    <a class="nav-link dropdown-toggle"
                         data-bs-toggle="dropdown"
                         href="#"
                         role="button"
                         aria-haspopup="true"
                         aria-expanded="false"
-                        >USUARIO</a
-                    >
+                        >USUARIO</a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="{{url_for('ingreso_usuario')}}">Ingresar Usuario</a>
                         <a class="dropdown-item" href="{{url_for('modificar_usuario')}}">Modificar Usuario</a>
                         <a class="dropdown-item" href="{{url_for('ver_usuario')}}">Listar Usuario</a>
+                        <a class="dropdown-item" href="{{url_for('eliminar_usuario')}}">Eliminar Usuario</a>
+                    </div>
+                </li>
+            <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle"
+                        data-bs-toggle="dropdown"
+                        href="#"
+                        role="button"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        >TAREAS</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{{url_for('ingreso_tarea')}}">Ingresar tarea</a>
+                        <a class="dropdown-item" href="{{url_for('modificar_usuario')}}">Modificar tarea</a>
+                        <a class="dropdown-item" href="{{url_for('ver_usuario')}}">Listar tarea</a>
+                        <a class="dropdown-item" href="{{url_for('eliminar_usuario')}}">Eliminar tarea</a>
                     </div>
                 </li>
             </ul>
-            
-            <!-- Tab panes -->
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="tab1Id" role="tabpanel">
-                    
-                </div>
-                <div class="tab-pane fade" id="tab2Id" role="tabpanel"></div>
-                <div class="tab-pane fade" id="tab3Id" role="tabpanel"></div>
-                <div class="tab-pane fade" id="tab4Id" role="tabpanel"></div>
-                <div class="tab-pane fade" id="tab5Id" role="tabpanel"></div>
-            </div>
-            
             <!-- (Optional) - Place this js code after initializing bootstrap.min.js or bootstrap.bundle.min.js -->
             <script>
                 var triggerEl = document.querySelector("#navId a");
